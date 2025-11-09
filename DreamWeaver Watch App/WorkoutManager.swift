@@ -17,6 +17,7 @@ class WorkoutManager: NSObject, ObservableObject {
     @Published var heartRate: Double = 0
     @Published var hrv: Double = 0
     @Published var elapsedTime: TimeInterval = 0
+    @Published var isAuthorized = false
     
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?

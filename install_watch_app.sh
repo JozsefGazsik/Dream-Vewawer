@@ -55,13 +55,13 @@ echo ""
 # 1. TISZTÍTÁS
 echo "🧹 Build tisztítása..."
 rm -rf ~/Library/Developer/Xcode/DerivedData/Dream_Vewawer-*
-xcodebuild clean -project "Dream Vewawer.xcodeproj" -scheme "DreamWeaver Watch App"
+xcodebuild clean -project "Dream Vewawer.xcodeproj" -scheme "DreamWeaverWatch"
 
 # 2. WATCH APP BUILD
 echo "⌚️ Watch App build..."
 xcodebuild \
     -project "Dream Vewawer.xcodeproj" \
-    -scheme "DreamWeaver Watch App" \
+    -scheme "DreamWeaverWatch" \
     -destination "id=$WATCH_ID" \
     -sdk watchsimulator \
     -configuration Debug \
@@ -101,7 +101,7 @@ else
     echo "🔄 Xcode-os telepítés..."
     xcodebuild \
         -project "Dream Vewawer.xcodeproj" \
-        -scheme "DreamWeaver Watch App" \
+        -scheme "DreamWeaverWatch" \
         -destination "id=$WATCH_ID" \
         -sdk watchsimulator \
         -configuration Debug \

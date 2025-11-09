@@ -6,19 +6,33 @@
 	<string>GJSA.Dream-Vewawer.DreamWeaverWatchApp</string>
 	<key>CFBundleDisplayName</key>
 	<string>DreamWeaver</string>
+	<key>CFBundleName</key>
+	<string>DreamWeaver</string>
 	<key>CFBundleExecutable</key>
 	<string>DreamWeaverWatch</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>WKApplication</key>
-	<true/>
+	<key>CFBundlePackageType</key>
+	<string>XPC!</string>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.appkit-extension-point</string>
+	</dict>
+	<key>EXAppExtensionAttributes</key>
+	<dict>
+		<key>EXExtensionPointIdentifier</key>
+		<string>com.apple.watchkit.app-extension</string>
+	</dict>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>GJSA.Dream-Vewawer</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>DreamWeaver needs to record sleep sessions</string>
+	<key>LSApplicationLaunchProhibited</key>
+	<false/>
 </dict>
 </plist>

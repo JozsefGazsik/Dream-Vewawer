@@ -7,144 +7,152 @@
 
 import SwiftUI
 import HealthKit
+import WatchConnectivity
 
 struct ContentView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
-    @State private var showingPermission = false
-    @State private var syncOpacity: Double = 1.0
+    @State private var isTracking = false
+    @State private var heartRate: Double = 0.0
+    @State private var isConnectedToiPhone = false
+    @State private var showingError = false
+    @State private var errorMessage = ""
     
     var body: some View {
-        ZStack {
-            // Background gradient
-            LinearGradient(
-                colors: [.indigo.opacity(0.3), .purple.opacity(0.5), .black],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
-            
-            VStack(spacing: 20) {
-                // Moon icon
-                Image(systemName: "moon.stars.fill")
-                    .font(.system(size: 50))
-                    .foregroundStyle(.yellow)
-                
-                if workoutManager.isTracking {
-                    trackingView
-                        .onAppear {
-                            startSyncAnimation()
-                        }
-                } else {
-                    startView
-                }
-            }
-            .padding()
-        }
-        .onAppear {
-            workoutManager.requestAuthorization()
-        }
-    }
-    
-    private var startView: some View {
-        VStack(spacing: 15) {
-            Text("DreamWeaver")
-                .font(.headline)
-                .foregroundStyle(.white)
-            
-            Text("Track your sleep")
-                .font(.caption)
-                .foregroundStyle(.white.opacity(0.7))
-            
-            Button(action: {
-                workoutManager.startWorkout()
-            }) {
-                Label("Start", systemImage: "play.fill")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(.blue)
-                    .clipShape(Capsule())
-            }
-            .buttonStyle(.plain)
-        }
-    }
-    
-    private var trackingView: some View {
-        VStack(spacing: 15) {
-            Text("Tracking Sleep")
-                .font(.headline)
-                .foregroundStyle(.white)
-            
-            // Heart rate
+        VStack(spacing: 16) {
+            // App title & icon
             HStack {
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(.red)
-                Text("\(Int(workoutManager.heartRate)) BPM")
-                    .font(.system(size: 24, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
+                Image(systemName: "moon.stars.fill")
+                    .foregroundColor(.yellow)
+                    .font(.title2)
+                
+                Text("DreamWeaver")
+                    .font(.headline)
+                    .foregroundColor(.white)
             }
             
-            // HRV
-            if workoutManager.hrv > 0 {
-                HStack {
-                    Image(systemName: "waveform.path.ecg")
-                        .foregroundStyle(.pink)
-                    Text("\(Int(workoutManager.hrv)) ms")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(.white)
+            // Connection status
+            HStack {
+                Circle()
+                    .fill(isConnectedToiPhone ? .green : .red)
+                    .frame(width: 8, height: 8)
+                
+                Text(isConnectedToiPhone ? "iPhone Connected" : "iPhone Disconnected")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            
+            // Heart rate display
+            if heartRate > 0 {
+                VStack(spacing: 4) {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                        .font(.title3)
+                    
+                    Text("\(Int(heartRate)) BPM")
+                        .font(.title3)
+                        .foregroundColor(.white)
                 }
             }
             
-            // Duration
-            Text(timeString(from: workoutManager.elapsedTime))
-                .font(.system(size: 20, design: .monospaced))
-                .foregroundStyle(.white.opacity(0.8))
-            
-            // Sync status with animation
-            HStack(spacing: 4) {
-                Circle()
-                    .fill(.green)
-                    .frame(width: 6, height: 6)
-                    .opacity(syncOpacity)
-                Text("iPhone Synced")
-                    .font(.caption2)
-                    .foregroundStyle(.green)
-            }
-            
+            // Main button
             Button(action: {
-                workoutManager.stopWorkout()
+                if isTracking {
+                    stopTracking()
+                } else {
+                    startTracking()
+                }
             }) {
-                Label("Stop", systemImage: "stop.fill")
+                Text(isTracking ? "Stop Sleep" : "Start Sleep")
                     .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(.red)
-                    .clipShape(Capsule())
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .background(isTracking ? Color.red : Color.blue)
+                    .cornerRadius(22)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(PlainButtonStyle())
+            
+            if isTracking {
+                Text("Tracking...")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding()
+        .background(Color.black.ignoresSafeArea())
+        .onAppear {
+            setupWatchApp()
+        }
+        .alert("Error", isPresented: $showingError) {
+            Button("OK") { }
+        } message: {
+            Text(errorMessage)
         }
     }
     
-    private func timeString(from timeInterval: TimeInterval) -> String {
-        let hours = Int(timeInterval) / 3600
-        let minutes = Int(timeInterval) / 60 % 60
-        let seconds = Int(timeInterval) % 60
+    // MARK: - Functions
+    
+    private func setupWatchApp() {
+        print("🌙 DreamWeaver Watch App - Indulás")
+        workoutManager.requestAuthorization()
+        checkiPhoneConnection()
         
-        if hours > 0 {
-            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-        } else {
-            return String(format: "%02d:%02d", minutes, seconds)
+        // Heart rate frissítés figyelése
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+            updateHeartRate()
         }
     }
-}
-
-extension ContentView {
-    func startSyncAnimation() {
-        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-            syncOpacity = 0.3
+    
+    private func startTracking() {
+        print("▶️ Sleep tracking indítása...")
+        
+        workoutManager.startWorkout()
+        isTracking = true
+        
+        // Értesítsd az iPhone-t
+        sendMessageToiPhone(["action": "start_sleep"])
+    }
+    
+    private func stopTracking() {
+        print("⏹️ Sleep tracking leállítása...")
+        
+        workoutManager.stopWorkout()
+        isTracking = false
+        heartRate = 0.0
+        
+        // Értesítsd az iPhone-t
+        sendMessageToiPhone(["action": "stop_sleep"])
+    }
+    
+    private func updateHeartRate() {
+        // WorkoutManager-ből kérdezd le a legfrissebb pulzust
+        heartRate = workoutManager.heartRate
+    }
+    
+    private func checkiPhoneConnection() {
+        if WCSession.default.isReachable {
+            isConnectedToiPhone = true
+        } else {
+            isConnectedToiPhone = false
         }
+    }
+    
+    private func sendMessageToiPhone(_ message: [String: Any]) {
+        guard WCSession.default.isReachable else {
+            print("📱 iPhone nem elérhető")
+            return
+        }
+        
+        WCSession.default.sendMessage(message) { response in
+            print("📱 iPhone válasz: \(response)")
+        } errorHandler: { error in
+            print("📱 iPhone üzenet hiba: \(error.localizedDescription)")
+        }
+    }
+    
+    private func showError(_ message: String) {
+        errorMessage = message
+        showingError = true
+        print("❌ Hiba: \(message)")
     }
 }
 
