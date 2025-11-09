@@ -26,6 +26,14 @@ final class SleepData {
     var dreamTitle: String?
     var dreamNotes: String?
     
+    // AI-generated dream interpretation
+    var aiNarrative: String? // AI-generated dream story
+    var aiThemes: [String]? // AI-identified themes
+    var aiSymbolism: [String]? // Symbolic elements
+    var aiIntensity: Double? // AI-calculated intensity 0-1
+    var aiConsciousness: Double? // AI-calculated lucidity 0-1
+    var aiVisualPrompt: String? // Description for visualization
+    
     init(date: Date = Date(),
          duration: TimeInterval = 0,
          avgHeartRate: Double = 65,

@@ -39,7 +39,28 @@ struct DreamDetailView: View {
         .navigationTitle("Dream Details")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingVisualization) {
-            DreamVisualizationView(sleepData: sleepData)
+            // Use AI-enhanced visualization if available, otherwise use standard
+            if let narrative = sleepData.aiNarrative,
+               let themes = sleepData.aiThemes,
+               let symbolism = sleepData.aiSymbolism,
+               let intensity = sleepData.aiIntensity,
+               let consciousness = sleepData.aiConsciousness,
+               let visualPrompt = sleepData.aiVisualPrompt {
+                
+                let interpretation = DreamInterpretation(
+                    narrative: narrative,
+                    mood: sleepData.dreamMood,
+                    themes: themes,
+                    visualPrompt: visualPrompt,
+                    intensity: intensity,
+                    consciousness: consciousness,
+                    symbolism: symbolism
+                )
+                
+                AIEnhancedVisualizationView(sleepData: sleepData, interpretation: interpretation)
+            } else {
+                DreamVisualizationView(sleepData: sleepData)
+            }
         }
     }
     
@@ -144,6 +165,65 @@ struct DreamDetailView: View {
     
     private var notesSection: some View {
         VStack(alignment: .leading, spacing: 15) {
+            // AI Interpretation Section (if available)
+            if let narrative = sleepData.aiNarrative {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack {
+                        Image(systemName: "sparkles")
+                            .foregroundStyle(.yellow)
+                        Text("AI Dream Interpretation")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                    }
+                    
+                    Text(narrative)
+                        .font(.system(size: 16))
+                        .foregroundStyle(.white.opacity(0.9))
+                        .lineSpacing(4)
+                    
+                    // Themes
+                    if let themes = sleepData.aiThemes, !themes.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 8) {
+                                ForEach(themes, id: \.self) { theme in
+                                    Text(theme)
+                                        .font(.caption)
+                                        .padding(.horizontal, 10)
+                                        .padding(.vertical, 5)
+                                        .background(Color.blue.opacity(0.3))
+                                        .clipShape(Capsule())
+                                        .foregroundStyle(.white)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Intensity & Consciousness metrics
+                    if let intensity = sleepData.aiIntensity, let consciousness = sleepData.aiConsciousness {
+                        HStack(spacing: 20) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Intensity")
+                                    .font(.caption)
+                                    .foregroundStyle(.white.opacity(0.6))
+                                ProgressView(value: intensity)
+                                    .tint(.orange)
+                            }
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Lucidity")
+                                    .font(.caption)
+                                    .foregroundStyle(.white.opacity(0.6))
+                                ProgressView(value: consciousness)
+                                    .tint(.purple)
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .background(.ultraThinMaterial)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+            }
+            
             Text("Dream Notes")
                 .font(.system(size: 20, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)

@@ -18,6 +18,9 @@ struct SleepTrackingView: View {
     @State private var currentHeartRate: Double = 65
     @State private var currentMovement: Double = 0.3
     @State private var timer: Timer?
+    @State private var isProcessingAI = false
+    
+    @StateObject private var aiService = AIDreamService()
     
     var body: some View {
         ZStack {
@@ -67,6 +70,20 @@ struct SleepTrackingView: View {
                     .padding()
                     .background(.ultraThinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
+                }
+                
+                // AI processing indicator
+                if isProcessingAI {
+                    HStack(spacing: 12) {
+                        ProgressView()
+                            .tint(.white)
+                        Text("AI analyzing your dream...")
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.8))
+                    }
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .clipShape(Capsule())
                 }
                 
                 Spacer()
@@ -135,8 +152,29 @@ struct SleepTrackingView: View {
         
         modelContext.insert(sleepSession)
         
-        // Dismiss and go back to main view
-        dismiss()
+        // Generate AI interpretation asynchronously
+        isProcessingAI = true
+        Task {
+            if let interpretation = await aiService.interpretDream(from: sleepSession) {
+                // Store AI interpretation in sleep data
+                sleepSession.aiNarrative = interpretation.narrative
+                sleepSession.aiThemes = interpretation.themes
+                sleepSession.aiSymbolism = interpretation.symbolism
+                sleepSession.aiIntensity = interpretation.intensity
+                sleepSession.aiConsciousness = interpretation.consciousness
+                sleepSession.aiVisualPrompt = interpretation.visualPrompt
+                
+                // Update mood if AI provides different interpretation
+                if !interpretation.mood.isEmpty {
+                    sleepSession.dreamMood = interpretation.mood
+                }
+            }
+            
+            isProcessingAI = false
+            
+            // Dismiss and go back to main view
+            dismiss()
+        }
     }
     
     private func timeString(from timeInterval: TimeInterval) -> String {
