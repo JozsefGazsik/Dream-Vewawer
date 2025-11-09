@@ -11,6 +11,7 @@ import HealthKit
 struct ContentView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var showingPermission = false
+    @State private var syncOpacity: Double = 1.0
     
     var body: some View {
         ZStack {
@@ -30,6 +31,9 @@ struct ContentView: View {
                 
                 if workoutManager.isTracking {
                     trackingView
+                        .onAppear {
+                            startSyncAnimation()
+                        }
                 } else {
                     startView
                 }
@@ -68,7 +72,7 @@ struct ContentView: View {
     
     private var trackingView: some View {
         VStack(spacing: 15) {
-            Text("Tracking...")
+            Text("Tracking Sleep")
                 .font(.headline)
                 .foregroundStyle(.white)
             
@@ -97,10 +101,16 @@ struct ContentView: View {
                 .font(.system(size: 20, design: .monospaced))
                 .foregroundStyle(.white.opacity(0.8))
             
-            // Sync indicator
-            Text("📡 Syncing to iPhone")
-                .font(.caption2)
-                .foregroundStyle(.green)
+            // Sync status with animation
+            HStack(spacing: 4) {
+                Circle()
+                    .fill(.green)
+                    .frame(width: 6, height: 6)
+                    .opacity(syncOpacity)
+                Text("iPhone Synced")
+                    .font(.caption2)
+                    .foregroundStyle(.green)
+            }
             
             Button(action: {
                 workoutManager.stopWorkout()
@@ -126,6 +136,14 @@ struct ContentView: View {
             return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
         } else {
             return String(format: "%02d:%02d", minutes, seconds)
+        }
+    }
+}
+
+extension ContentView {
+    func startSyncAnimation() {
+        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+            syncOpacity = 0.3
         }
     }
 }

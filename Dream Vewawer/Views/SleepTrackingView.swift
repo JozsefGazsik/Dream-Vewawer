@@ -47,20 +47,11 @@ struct SleepTrackingView: View {
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
                 
-                // Watch connection status
-                if connectivityManager.isWatchAppInstalled {
-                    HStack(spacing: 8) {
-                        Image(systemName: connectivityManager.isWatchConnected ? "applewatch" : "applewatch.slash")
-                            .foregroundStyle(connectivityManager.isWatchConnected ? .green : .gray)
-                        Text(connectivityManager.isWatchConnected ? "Watch Connected" : "Watch Not Reachable")
-                            .font(.caption)
-                            .foregroundStyle(.white.opacity(0.7))
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(.ultraThinMaterial)
-                    .clipShape(Capsule())
-                }
+                // Sync Status Component
+                SyncStatusView(
+                    connectivityManager: connectivityManager,
+                    isTracking: isTracking
+                )
                 
                 if isTracking {
                     VStack(spacing: 15) {
