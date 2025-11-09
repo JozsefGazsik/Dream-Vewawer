@@ -26,5 +26,7 @@
 	<true/>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>GJSA.Dream-Vewawer</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 </dict>
 </plist>
