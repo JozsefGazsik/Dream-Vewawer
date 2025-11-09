@@ -12,7 +12,7 @@ PROJECT_DIR="/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer"
 cd "$PROJECT_DIR"
 
 # Fix Watch és iPhone ID-k  
-WATCH_ID="563D5769-B30E-4E56-8B7D-21FDFC9F9BBE"  # Apple Watch Series 8 (45mm)
+WATCH_ID="FBAC26F7-0661-41E5-98B0-1ACD524AC029"  # Apple Watch SE 3 New (44mm) - watchOS 26.1
 IPHONE_ID="F7BCCE4F-8C56-4C92-8878-3BBE2F169FD3"
 
 echo "📱 iPhone ID: $IPHONE_ID"
