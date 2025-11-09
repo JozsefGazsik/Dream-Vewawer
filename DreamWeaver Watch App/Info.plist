@@ -14,25 +14,15 @@
 	<string>1</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundlePackageType</key>
-	<string>XPC!</string>
-	<key>NSExtension</key>
-	<dict>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.appkit-extension-point</string>
-	</dict>
-	<key>EXAppExtensionAttributes</key>
-	<dict>
-		<key>EXExtensionPointIdentifier</key>
-		<string>com.apple.watchkit.app-extension</string>
-	</dict>
+	<key>WKApplication</key>
+	<true/>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>GJSA.Dream-Vewawer</string>
+	<key>WKWatchOnly</key>
+	<false/>
 	<key>NSHealthShareUsageDescription</key>
 	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>DreamWeaver needs to record sleep sessions</string>
-	<key>LSApplicationLaunchProhibited</key>
-	<false/>
 </dict>
 </plist>
