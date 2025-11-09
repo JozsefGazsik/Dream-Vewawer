@@ -147,4 +147,8 @@ Users anonymously share dream visuals
 
 “Inspired by Unknown Mind” — AI merges several dream styles into collective art
 
+The apple watch and Ihone
+The bundle path must show DreamWeaverWatch.appex.app - the simulator created an .app wrapper around the .appex file. However, WatchConnectivity have to be recognised properly.
+
+The fundamental issue is that WatchConnectivity framework expects a companion Watch app that's embedded within the iPhone app bundle, not installed separately. Let me fix this by creating a proper Watch App target structure.
 

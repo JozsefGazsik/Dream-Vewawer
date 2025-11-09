@@ -309,6 +309,13 @@ extension WorkoutManager: WCSessionDelegate {
                     "hrv": hrv,
                     "timestamp": Date().timeIntervalSince1970
                 ])
+            case "ping":
+                // Respond to connectivity check from iPhone
+                replyHandler([
+                    "status": "pong",
+                    "appRunning": true,
+                    "timestamp": Date().timeIntervalSince1970
+                ])
             default:
                 replyHandler(["status": "unknown command"])
             }

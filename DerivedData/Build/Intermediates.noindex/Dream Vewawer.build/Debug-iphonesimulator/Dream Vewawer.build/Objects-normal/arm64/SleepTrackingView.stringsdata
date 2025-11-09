@@ -1,0 +1,64 @@
+{
+  "source": "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/Dream Vewawer/Views/SleepTrackingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Sleep Tracking",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tracking Your Dreams...",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ready to Sleep?",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 46
+        }
+      },
+      {
+        "comment": "",
+        "key": "📡 Receiving live data from Watch",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI analyzing your dream...",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Stop Tracking",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Dream Mode",
+        "location": {
+          "startingColumn": 56,
+          "startingLine": 115
+        }
+      }
+    ]
+  },
+  "version": 1
+}

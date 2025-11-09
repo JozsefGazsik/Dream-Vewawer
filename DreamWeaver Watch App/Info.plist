@@ -16,5 +16,9 @@
 	<true/>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>GJSA.Dream-Vewawer</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>DreamWeaver needs to record sleep sessions</string>
 </dict>
 </plist>

@@ -1,0 +1,80 @@
+{
+  "source": "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/Dream Vewawer/Views/DreamDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Dream Details",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 52
+        }
+      },
+      {
+        "comment": "",
+        "key": "Play Dream Visualization",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "Sleep Summary",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "Biosignals",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 140
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dream Notes",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "No notes added yet",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 253
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI Dream Interpretation",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "Intensity",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "Lucidity",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 226
+        }
+      }
+    ]
+  },
+  "version": 1
+}

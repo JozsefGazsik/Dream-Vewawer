@@ -110,6 +110,23 @@ class WatchConnectivityManager: NSObject, ObservableObject {
             print("❌ Failed to update context: \(error.localizedDescription)")
         }
     }
+    
+    // MARK: - Connectivity Check
+    
+    private func pingWatchApp() {
+        guard let session = session, session.isReachable else { return }
+        
+        let pingMessage: [String: Any] = ["command": "ping", "timestamp": Date().timeIntervalSince1970]
+        
+        session.sendMessage(pingMessage, replyHandler: { reply in
+            DispatchQueue.main.async {
+                self.isWatchAppInstalled = true
+                print("✅ Watch app responded to ping - confirmed installed and running")
+            }
+        }, errorHandler: { error in
+            print("⚠️ Watch app ping failed: \(error.localizedDescription)")
+        })
+    }
 }
 
 // MARK: - WCSessionDelegate
@@ -119,10 +136,25 @@ extension WatchConnectivityManager: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         DispatchQueue.main.async {
             self.isWatchConnected = activationState == .activated
-            self.isWatchAppInstalled = session.isWatchAppInstalled
+            
+            // Workaround for .appex not being detected as installed
+            // If session is reachable, assume Watch app is available
+            if session.isReachable {
+                self.isWatchAppInstalled = true
+                print("📱 Watch is reachable - assuming app is installed")
+            } else {
+                self.isWatchAppInstalled = session.isWatchAppInstalled
+            }
             
             print("📱 Watch Connection State: \(activationState.rawValue)")
-            print("📱 Watch App Installed: \(session.isWatchAppInstalled)")
+            print("📱 Watch App Installed (reported): \(session.isWatchAppInstalled)")
+            print("📱 Watch App Installed (effective): \(self.isWatchAppInstalled)")
+            print("📱 Watch Reachable: \(session.isReachable)")
+            
+            // Try to ping the Watch app to verify it's actually running
+            if session.isReachable {
+                self.pingWatchApp()
+            }
         }
     }
     
@@ -138,6 +170,14 @@ extension WatchConnectivityManager: WCSessionDelegate {
     func sessionReachabilityDidChange(_ session: WCSession) {
         DispatchQueue.main.async {
             self.isWatchConnected = session.isReachable
+            
+            // Update app installed status based on reachability
+            if session.isReachable {
+                self.isWatchAppInstalled = true
+                print("📱 Watch became reachable - app is available")
+                self.pingWatchApp()
+            }
+            
             print("📱 Watch reachability changed: \(session.isReachable)")
         }
     }

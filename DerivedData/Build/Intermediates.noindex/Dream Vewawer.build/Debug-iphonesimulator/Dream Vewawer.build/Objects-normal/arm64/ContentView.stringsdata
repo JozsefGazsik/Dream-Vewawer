@@ -1,0 +1,72 @@
+{
+  "source": "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/Dream Vewawer/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "DreamWeaver",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "See What Your Mind Creates",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 70
+        }
+      },
+      {
+        "comment": "",
+        "key": "Track your sleep and visualize your dreams",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start Dream Mode",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 81
+        }
+      },
+      {
+        "comment": "",
+        "key": "Last Dream",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 111
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%% REM",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 144
+        }
+      },
+      {
+        "comment": "",
+        "key": "Dream History",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 167
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 200
+        }
+      }
+    ]
+  },
+  "version": 1
+}
