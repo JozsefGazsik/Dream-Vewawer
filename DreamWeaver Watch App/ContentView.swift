@@ -81,10 +81,26 @@ struct ContentView: View {
                     .foregroundStyle(.white)
             }
             
+            // HRV
+            if workoutManager.hrv > 0 {
+                HStack {
+                    Image(systemName: "waveform.path.ecg")
+                        .foregroundStyle(.pink)
+                    Text("\(Int(workoutManager.hrv)) ms")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundStyle(.white)
+                }
+            }
+            
             // Duration
             Text(timeString(from: workoutManager.elapsedTime))
                 .font(.system(size: 20, design: .monospaced))
                 .foregroundStyle(.white.opacity(0.8))
+            
+            // Sync indicator
+            Text("📡 Syncing to iPhone")
+                .font(.caption2)
+                .foregroundStyle(.green)
             
             Button(action: {
                 workoutManager.stopWorkout()

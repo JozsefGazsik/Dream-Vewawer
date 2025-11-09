@@ -19,8 +19,10 @@ struct SleepTrackingView: View {
     @State private var currentMovement: Double = 0.3
     @State private var timer: Timer?
     @State private var isProcessingAI = false
+    @State private var currentSessionId: UUID?
     
     @StateObject private var aiService = AIDreamService()
+    @StateObject private var connectivityManager = WatchConnectivityManager.shared
     
     var body: some View {
         ZStack {
@@ -45,6 +47,21 @@ struct SleepTrackingView: View {
                     .font(.system(size: 28, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
                 
+                // Watch connection status
+                if connectivityManager.isWatchAppInstalled {
+                    HStack(spacing: 8) {
+                        Image(systemName: connectivityManager.isWatchConnected ? "applewatch" : "applewatch.slash")
+                            .foregroundStyle(connectivityManager.isWatchConnected ? .green : .gray)
+                        Text(connectivityManager.isWatchConnected ? "Watch Connected" : "Watch Not Reachable")
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.7))
+                    }
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(.ultraThinMaterial)
+                    .clipShape(Capsule())
+                }
+                
                 if isTracking {
                     VStack(spacing: 15) {
                         Text(timeString(from: elapsedTime))
@@ -54,9 +71,16 @@ struct SleepTrackingView: View {
                         HStack(spacing: 30) {
                             BiosignalIndicator(
                                 icon: "heart.fill",
-                                value: String(format: "%.0f", currentHeartRate),
+                                value: String(format: "%.0f", connectivityManager.isWatchConnected ? connectivityManager.latestHeartRate : currentHeartRate),
                                 unit: "bpm",
                                 color: .red
+                            )
+                            
+                            BiosignalIndicator(
+                                icon: "waveform.path.ecg",
+                                value: String(format: "%.0f", connectivityManager.latestHRV),
+                                unit: "ms",
+                                color: .pink
                             )
                             
                             BiosignalIndicator(
@@ -65,6 +89,12 @@ struct SleepTrackingView: View {
                                 unit: "",
                                 color: .green
                             )
+                        }
+                        
+                        if connectivityManager.isWatchConnected {
+                            Text("📡 Receiving live data from Watch")
+                                .font(.caption)
+                                .foregroundStyle(.green)
                         }
                     }
                     .padding()
@@ -123,13 +153,29 @@ struct SleepTrackingView: View {
         isTracking = true
         startTime = Date()
         elapsedTime = 0
+        currentSessionId = UUID()
+        
+        // Set model context for connectivity manager
+        connectivityManager.setModelContext(modelContext)
+        
+        // Start tracking on Watch if connected
+        if let sessionId = currentSessionId {
+            connectivityManager.startSleepSession(sessionId: sessionId)
+        }
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             elapsedTime += 1
             
-            // Simulate biosignal changes
-            currentHeartRate = 60 + Double.random(in: -5...10)
+            // Simulate biosignal changes (will be replaced by real Watch data)
+            if !connectivityManager.isWatchConnected {
+                currentHeartRate = 60 + Double.random(in: -5...10)
+            }
             currentMovement = Double.random(in: 0.1...0.7)
+            
+            // Request current metrics from Watch periodically
+            if Int(elapsedTime) % 5 == 0 {
+                connectivityManager.requestCurrentMetrics()
+            }
         }
     }
     
@@ -138,17 +184,25 @@ struct SleepTrackingView: View {
         timer?.invalidate()
         timer = nil
         
-        // Create sleep data with simulated biosignals
+        // Stop tracking on Watch
+        connectivityManager.stopSleepSession()
+        
+        // Create sleep data with biosignals
         let sleepSession = SleepData(
             date: startTime ?? Date(),
             duration: elapsedTime,
-            avgHeartRate: 65 + Double.random(in: -5...10),
-            heartRateVariability: Double.random(in: 30...70),
+            avgHeartRate: connectivityManager.isWatchConnected ? connectivityManager.latestHeartRate : (65 + Double.random(in: -5...10)),
+            heartRateVariability: connectivityManager.isWatchConnected ? connectivityManager.latestHRV : Double.random(in: 30...70),
             movementIntensity: Double.random(in: 0.2...0.6),
             remPercentage: Double.random(in: 15...30),
             deepSleepPercentage: Double.random(in: 20...35),
             ambientNoiseLevel: Double.random(in: 0.1...0.4)
         )
+        
+        // Set the session ID so Watch data can be correlated
+        if let sessionId = currentSessionId {
+            sleepSession.id = sessionId
+        }
         
         modelContext.insert(sleepSession)
         
@@ -171,6 +225,7 @@ struct SleepTrackingView: View {
             }
             
             isProcessingAI = false
+            currentSessionId = nil
             
             // Dismiss and go back to main view
             dismiss()

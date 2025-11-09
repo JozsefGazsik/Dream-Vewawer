@@ -34,6 +34,10 @@ final class SleepData {
     var aiConsciousness: Double? // AI-calculated lucidity 0-1
     var aiVisualPrompt: String? // Description for visualization
     
+    // Time-series biosignal data from Apple Watch
+    @Relationship(deleteRule: .cascade, inverse: \BiosignalDataPoint.sleepSession)
+    var biosignalTimeline: [BiosignalDataPoint] = []
+    
     init(date: Date = Date(),
          duration: TimeInterval = 0,
          avgHeartRate: Double = 65,

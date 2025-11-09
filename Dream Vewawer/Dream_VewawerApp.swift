@@ -13,6 +13,7 @@ struct Dream_VewawerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             SleepData.self,
+            BiosignalDataPoint.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -26,6 +27,10 @@ struct Dream_VewawerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    // Initialize WatchConnectivity with model context
+                    WatchConnectivityManager.shared.setModelContext(sharedModelContainer.mainContext)
+                }
         }
         .modelContainer(sharedModelContainer)
     }

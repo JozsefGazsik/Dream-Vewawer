@@ -24,6 +24,19 @@ struct DreamDetailView: View {
                     // Dream Visualization Preview
                     visualizationCard
                     
+                    // Heart Rate Timeline (from Apple Watch)
+                    if !sleepData.biosignalTimeline.isEmpty {
+                        HeartRateChartView(
+                            biosignalData: sleepData.biosignalTimeline.sorted(by: { $0.timestamp < $1.timestamp }),
+                            startTime: sleepData.date
+                        )
+                        
+                        HRVChartView(
+                            biosignalData: sleepData.biosignalTimeline.sorted(by: { $0.timestamp < $1.timestamp }),
+                            startTime: sleepData.date
+                        )
+                    }
+                    
                     // Dream Info Card
                     dreamInfoCard
                     
