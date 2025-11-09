@@ -11,8 +11,8 @@ echo "==========================================="
 PROJECT_DIR="/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer"
 cd "$PROJECT_DIR"
 
-# Fix Watch és iPhone ID-k
-WATCH_ID="576BCE80-F430-44C8-B1F6-A5068B3995FE"
+# Fix Watch és iPhone ID-k  
+WATCH_ID="563D5769-B30E-4E56-8B7D-21FDFC9F9BBE"  # Apple Watch Series 8 (45mm)
 IPHONE_ID="F7BCCE4F-8C56-4C92-8878-3BBE2F169FD3"
 
 echo "📱 iPhone ID: $IPHONE_ID"

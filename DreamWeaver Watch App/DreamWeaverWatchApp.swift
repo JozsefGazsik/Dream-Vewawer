@@ -15,6 +15,9 @@ struct DreamWeaverWatchApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(workoutManager)
+                .onAppear {
+                    print("🌙 DreamWeaver Watch App Started!")
+                }
         }
     }
 }

@@ -20,6 +20,12 @@
 	<string>GJSA.Dream-Vewawer</string>
 	<key>WKWatchOnly</key>
 	<false/>
+	<key>WKRunsIndependentlyOfCompanionApp</key>
+	<true/>
+	<key>LSRequiresIPhoneOS</key>
+	<false/>
+	<key>WKAppBundleIdentifier</key>
+	<string>GJSA.Dream-Vewawer.DreamWeaverWatchApp</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
 	<key>NSHealthUpdateUsageDescription</key>
