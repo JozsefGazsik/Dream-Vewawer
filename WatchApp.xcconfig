@@ -1,0 +1,6 @@
+// Workaround for Xcode 26.1 "Multiple commands produce" bug
+// This disables the problematic CopyAndPreserveArchs phase
+
+EXCLUDED_ARCHS[sdk=watchsimulator*] = x86_64
+ONLY_ACTIVE_ARCH = YES
+VALID_ARCHS[sdk=watchsimulator*] = arm64

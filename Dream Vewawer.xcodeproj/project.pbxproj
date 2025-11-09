@@ -359,13 +359,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		CB5BE0D42EC0AC94008F0645 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 28TCC8Y78C;
+	CB5BE0D42EC0AC94008F0645 /* Debug */ = {
+		isa = XCBuildConfiguration;
+		baseConfigurationReference = WatchApp.xcconfig;
+		buildSettings = {
+			ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+			CODE_SIGN_STYLE = Automatic;
+			CURRENT_PROJECT_VERSION = 1;
+			DEVELOPMENT_TEAM = 28TCC8Y78C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DreamWeaver Watch App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "DreamWeaver Watch App";
@@ -374,9 +375,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "GJSA.Dream-Vewawer.DreamWeaverWatchApp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+			MARKETING_VERSION = 1.0;
+			PRODUCT_BUNDLE_IDENTIFIER = "GJSA.Dream-Vewawer.DreamWeaverWatchApp";
+			PRODUCT_NAME = "DreamWeaverWatch";
 				SDKROOT = watchos;
 				SKIP_INSTALL = NO;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -386,9 +387,11 @@
 				SWIFT_VERSION = 5.0;
 			TARGETED_DEVICE_FAMILY = 4;
 			SUPPORTED_PLATFORMS = "watchos watchsimulator";
-			WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			STRIP_INSTALLED_PRODUCT = NO;
-			DEPLOYMENT_POSTPROCESSING = NO;
+		WATCHOS_DEPLOYMENT_TARGET = 10.0;
+		STRIP_INSTALLED_PRODUCT = NO;
+		DEPLOYMENT_POSTPROCESSING = NO;
+		EXCLUDED_ARCHS = "x86_64";
+		ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -417,12 +420,12 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				SUPPORTED_PLATFORMS = "watchos watchsimulator";
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 11.0;
-DONT_GENERATE_INFOPLIST_FILE = YES;
-INFOPLIST_OUTPUT_FORMAT = binary;
+			TARGETED_DEVICE_FAMILY = 4;
+			SUPPORTED_PLATFORMS = "watchos watchsimulator";
+			VALIDATE_PRODUCT = YES;
+			WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			STRIP_INSTALLED_PRODUCT = NO;
+			DEPLOYMENT_POSTPROCESSING = NO;
 			};
 			name = Release;
 		};
