@@ -26,7 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-	CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DreamWeaverWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+	CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.extensionkit-extension; includeInIndex = 0; path = "DreamWeaverWatch.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 	CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,12 +140,12 @@
 			fileSystemSynchronizedGroups = (
 				CB5BE0CC2EC0AC94008F0645 /* DreamWeaver Watch App */,
 			);
-			name = "DreamWeaver Watch App";
+			name = "DreamWeaverWatch";
 			packageProductDependencies = (
 			);
-			productName = "DreamWeaver Watch App";
-			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.app */;
-			productType = "com.apple.product-type.application.watchapp2";
+			productName = "DreamWeaverWatch";
+			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
 		};
 		CB76002F2EC09ADD00A3460C /* Dream Vewawer */ = {
 			isa = PBXNativeTarget;
