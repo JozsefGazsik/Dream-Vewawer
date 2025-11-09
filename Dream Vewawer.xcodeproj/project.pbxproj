@@ -24,12 +24,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "DreamWeaver Watch App.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CB5BE0D22EC0AC94008F0645 /* Exceptions for "DreamWeaver Watch App" folder in "DreamWeaver Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CB5BE0CA2EC0AC94008F0645 /* DreamWeaver Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		CB5BE0CC2EC0AC94008F0645 /* DreamWeaver Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CB5BE0D22EC0AC94008F0645 /* Exceptions for "DreamWeaver Watch App" folder in "DreamWeaver Watch App" target */,
+			);
+			path = "DreamWeaver Watch App";
+			sourceTree = "<group>";
+		};
 		CB7600322EC09ADD00A3460C /* Dream Vewawer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Dream Vewawer";
@@ -48,6 +67,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CB5BE0C82EC0AC94008F0645 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB76002D2EC09ADD00A3460C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +104,7 @@
 				CB7600322EC09ADD00A3460C /* Dream Vewawer */,
 				CB7600422EC09ADF00A3460C /* Dream VewawerTests */,
 				CB76004C2EC09ADF00A3460C /* Dream VewawerUITests */,
+				CB5BE0CC2EC0AC94008F0645 /* DreamWeaver Watch App */,
 				CB7600312EC09ADD00A3460C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +115,7 @@
 				CB7600302EC09ADD00A3460C /* Dream Vewawer.app */,
 				CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */,
 				CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */,
+				CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +123,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CB5BE0CA2EC0AC94008F0645 /* DreamWeaver Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB5BE0D32EC0AC94008F0645 /* Build configuration list for PBXNativeTarget "DreamWeaver Watch App" */;
+			buildPhases = (
+				CB5BE0C72EC0AC94008F0645 /* Sources */,
+				CB5BE0C82EC0AC94008F0645 /* Frameworks */,
+				CB5BE0C92EC0AC94008F0645 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CB5BE0CC2EC0AC94008F0645 /* DreamWeaver Watch App */,
+			);
+			name = "DreamWeaver Watch App";
+			packageProductDependencies = (
+			);
+			productName = "DreamWeaver Watch App";
+			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 		CB76002F2EC09ADD00A3460C /* Dream Vewawer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB7600532EC09ADF00A3460C /* Build configuration list for PBXNativeTarget "Dream Vewawer" */;
@@ -173,6 +223,9 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					CB5BE0CA2EC0AC94008F0645 = {
+						CreatedOnToolsVersion = 26.1;
+					};
 					CB76002F2EC09ADD00A3460C = {
 						CreatedOnToolsVersion = 26.1;
 					};
@@ -203,11 +256,19 @@
 				CB76002F2EC09ADD00A3460C /* Dream Vewawer */,
 				CB76003E2EC09ADF00A3460C /* Dream VewawerTests */,
 				CB7600482EC09ADF00A3460C /* Dream VewawerUITests */,
+				CB5BE0CA2EC0AC94008F0645 /* DreamWeaver Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CB5BE0C92EC0AC94008F0645 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB76002E2EC09ADD00A3460C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +293,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CB5BE0C72EC0AC94008F0645 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CB76002C2EC09ADD00A3460C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +337,69 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		CB5BE0D42EC0AC94008F0645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28TCC8Y78C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DreamWeaver Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DreamWeaver Watch App";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "GJSA.DreamWeaver-Watch-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Debug;
+		};
+		CB5BE0D52EC0AC94008F0645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28TCC8Y78C;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DreamWeaver Watch App/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "DreamWeaver Watch App";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "GJSA.DreamWeaver-Watch-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.1;
+			};
+			name = Release;
+		};
 		CB7600512EC09ADF00A3460C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -388,8 +519,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28TCC8Y78C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
@@ -430,8 +563,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 28TCC8Y78C;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
@@ -568,6 +703,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CB5BE0D32EC0AC94008F0645 /* Build configuration list for PBXNativeTarget "DreamWeaver Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB5BE0D42EC0AC94008F0645 /* Debug */,
+				CB5BE0D52EC0AC94008F0645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CB76002B2EC09ADD00A3460C /* Build configuration list for PBXProject "Dream Vewawer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
