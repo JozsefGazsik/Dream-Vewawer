@@ -1,0 +1,72 @@
+{
+  "source": "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/DreamWeaver Watch App/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "DreamWeaver",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 50
+        }
+      },
+      {
+        "comment": "",
+        "key": "Track your sleep",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 54
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "Tracking Sleep",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld BPM",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 83
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld ms",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "iPhone Synced",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Stop",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 118
+        }
+      }
+    ]
+  },
+  "version": 1
+}
