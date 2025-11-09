@@ -26,8 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.extensionkit-extension; includeInIndex = 0; path = "DreamWeaver Watch App.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.extensionkit-extension; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DreamWeaver Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 				CB7600302EC09ADD00A3460C /* Dream Vewawer.app */,
 				CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */,
 				CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */,
-				CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */,
+				CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,8 +144,8 @@
 			packageProductDependencies = (
 			);
 			productName = "DreamWeaver Watch App";
-			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.appex */;
-			productType = "com.apple.product-type.extensionkit-extension";
+			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaver Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
 		};
 		CB76002F2EC09ADD00A3460C /* Dream Vewawer */ = {
 			isa = PBXNativeTarget;
@@ -387,6 +387,8 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+DONT_GENERATE_INFOPLIST_FILE = YES;
+INFOPLIST_OUTPUT_FORMAT = binary;
 			};
 			name = Debug;
 		};
@@ -419,6 +421,8 @@
 				SUPPORTED_PLATFORMS = "watchos watchsimulator";
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 11.0;
+DONT_GENERATE_INFOPLIST_FILE = YES;
+INFOPLIST_OUTPUT_FORMAT = binary;
 			};
 			name = Release;
 		};
