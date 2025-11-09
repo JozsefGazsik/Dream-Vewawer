@@ -22,13 +22,18 @@
 	<false/>
 	<key>WKRunsIndependentlyOfCompanionApp</key>
 	<true/>
-	<key>LSRequiresIPhoneOS</key>
-	<false/>
-	<key>WKAppBundleIdentifier</key>
-	<string>GJSA.Dream-Vewawer.DreamWeaverWatchApp</string>
 	<key>NSHealthShareUsageDescription</key>
 	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>DreamWeaver needs to record sleep sessions</string>
+	<key>EXAppExtensionAttributes</key>
+	<dict>
+		<key>EXExtensionPointIdentifier</key>
+		<string>com.apple.extensionKit.appextension</string>
+		<key>EXExtensionPointName</key>
+		<string>App Extension</string>
+		<key>EXExtensionPointVersion</key>
+		<string>1.0</string>
+	</dict>
 </dict>
 </plist>
