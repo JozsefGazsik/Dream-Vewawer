@@ -190,7 +190,7 @@
 			);
 			productName = DreamWeaverWatch;
 			productReference = CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */;
-			productType = "com.apple.product-type.extensionkit-extension";
+			productType = "com.apple.product-type.app-extension";
 		};
 		CB76002F2EC09ADD00A3460C /* Dream Vewawer */ = {
 			isa = PBXNativeTarget;

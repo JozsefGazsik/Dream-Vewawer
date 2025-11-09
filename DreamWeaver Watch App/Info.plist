@@ -26,14 +26,12 @@
 	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>DreamWeaver needs to record sleep sessions</string>
-	<key>EXAppExtensionAttributes</key>
+	<key>NSExtension</key>
 	<dict>
-		<key>EXExtensionPointIdentifier</key>
-		<string>com.apple.extensionKit.appextension</string>
-		<key>EXExtensionPointName</key>
-		<string>App Extension</string>
-		<key>EXExtensionPointVersion</key>
-		<string>1.0</string>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>DreamWeaverWatch.DreamWeaverWatchApp</string>
 	</dict>
 </dict>
 </plist>
