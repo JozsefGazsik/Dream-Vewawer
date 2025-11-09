@@ -4,6 +4,10 @@ App Concept: DreamWeaver — “See What Your Mind Creates”
 DreamWeaver transforms your sleep data into living art.
 Using your iPhone and Apple Watch, it tracks your heart rate, movement, REM patterns, and ambient sound.
 In the morning, it generates a visual dream replay — an abstract AI animation inspired by your subconscious state.
+
+The app will be and integrated app family on Iphone and Applewatch. 
+On Applewatch we are going to monitor the physical functionality as sleeping ahbit and after communicate this metrics to iphone and on the Iphone we are going to see and cooment the Dreams. 
+
 Tagline:
 
 “Your mind paints while you sleep. DreamWeaver reveals the masterpiece.”
