@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>GJSA.Dream-Vewawer.DreamWeaverWatchApp</string>
+	<key>CFBundleDisplayName</key>
+	<string>DreamWeaver</string>
+	<key>CFBundleExecutable</key>
+	<string>DreamWeaverWatch</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>WKApplication</key>
+	<true/>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>GJSA.Dream-Vewawer</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>DreamWeaver needs access to your heart rate and movement data during sleep tracking</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>DreamWeaver needs to record sleep sessions</string>
+</dict>
+</plist>
