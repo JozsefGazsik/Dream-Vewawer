@@ -18,68 +18,108 @@ struct ContentView: View {
     @State private var errorMessage = ""
     
     var body: some View {
-        VStack(spacing: 16) {
-            // App title & icon
-            HStack {
-                Image(systemName: "moon.stars.fill")
-                    .foregroundColor(.yellow)
-                    .font(.title2)
-                
-                Text("DreamWeaver")
-                    .font(.headline)
-                    .foregroundColor(.white)
-            }
+        VStack(spacing: 8) {
+            // Nagy, feltűnő cím
+            Text("🌙 DREAM")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.yellow)
             
-            // Connection status
-            HStack {
-                Circle()
-                    .fill(isConnectedToiPhone ? .green : .red)
-                    .frame(width: 8, height: 8)
-                
-                Text(isConnectedToiPhone ? "iPhone Connected" : "iPhone Disconnected")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
+            Text("TRACKER")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
             
-            // Heart rate display
-            if heartRate > 0 {
-                VStack(spacing: 4) {
-                    Image(systemName: "heart.fill")
+            Rectangle()
+                .fill(Color.yellow)
+                .frame(height: 2)
+                .padding(.horizontal, 20)
+            
+            // Státusz
+            Group {
+                if isConnectedToiPhone {
+                    Text("📱 CONNECTED")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
+                } else {
+                    Text("📱 OFFLINE")
+                        .font(.caption)
+                        .fontWeight(.bold)
                         .foregroundColor(.red)
-                        .font(.title3)
-                    
-                    Text("\(Int(heartRate)) BPM")
-                        .font(.title3)
-                        .foregroundColor(.white)
                 }
             }
             
-            // Main button
+            // Pulzus
+            Group {
+                if heartRate > 0 {
+                    VStack(spacing: 2) {
+                        Text("💓")
+                            .font(.title2)
+                        Text("\(Int(heartRate))")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                        Text("BPM")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                } else {
+                    VStack(spacing: 2) {
+                        Text("💓")
+                            .font(.title2)
+                        Text("---")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                        Text("BPM")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            
+            Spacer()
+            
+            // Nagy, egyszerű gomb
             Button(action: {
+                print("🔘 WATCH BUTTON PRESSED! Current state: \(isTracking)")
                 if isTracking {
                     stopTracking()
                 } else {
                     startTracking()
                 }
             }) {
-                Text(isTracking ? "Stop Sleep" : "Start Sleep")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, minHeight: 44)
-                    .background(isTracking ? Color.red : Color.blue)
-                    .cornerRadius(22)
+                VStack(spacing: 4) {
+                    Image(systemName: isTracking ? "stop.fill" : "play.fill")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    
+                    Text(isTracking ? "STOP" : "START")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .background(isTracking ? Color.red : Color.green)
+                .cornerRadius(25)
             }
             .buttonStyle(PlainButtonStyle())
             
             if isTracking {
-                Text("Tracking...")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+                Text("⏱️ TRACKING...")
+                    .font(.caption2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.yellow)
+                    .padding(.top, 4)
             }
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
         .background(Color.black.ignoresSafeArea())
         .onAppear {
+            print("🔄 Watch ContentView appeared!")
             setupWatchApp()
         }
         .alert("Error", isPresented: $showingError) {
