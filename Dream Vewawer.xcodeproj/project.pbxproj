@@ -64,7 +64,7 @@
 
 /* Begin PBXFileReference section */
 		CB0FCA662EC126CD0006368D /* DreamVeawerWatch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = DreamVeawerWatch.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = DreamWeaverWatch.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DreamWeaverWatch.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
