@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CBAAE4682EC150B30047F21B /* DreamWeaverIphoneAI Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CBAAE4672EC150B30047F21B /* DreamWeaverIphoneAI Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,27 +23,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = CB76002F2EC09ADD00A3460C;
 			remoteInfo = "Dream Vewawer";
-		};
-		CBAAE4692EC150B30047F21B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB7600282EC09ADD00A3460C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBAAE4662EC150B30047F21B;
-			remoteInfo = "DreamWeaverIphoneAI Watch App";
-		};
-		CBAAE4772EC150B50047F21B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB7600282EC09ADD00A3460C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBAAE4662EC150B30047F21B;
-			remoteInfo = "DreamWeaverIphoneAI Watch App";
-		};
-		CBAAE4812EC150B50047F21B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CB7600282EC09ADD00A3460C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBAAE4662EC150B30047F21B;
-			remoteInfo = "DreamWeaverIphoneAI Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -68,10 +46,6 @@
 		CB7600302EC09ADD00A3460C /* Dream Vewawer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dream Vewawer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB76003F2EC09ADF00A3460C /* Dream VewawerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dream VewawerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBAAE4622EC150B30047F21B /* DreamWeaverIphoneAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamWeaverIphoneAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBAAE4672EC150B30047F21B /* DreamWeaverIphoneAI Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DreamWeaverIphoneAI Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBAAE4762EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DreamWeaverIphoneAI Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBAAE4802EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DreamWeaverIphoneAI Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -121,21 +95,6 @@
 		CB76004C2EC09ADF00A3460C /* Dream VewawerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Dream VewawerUITests";
-			sourceTree = "<group>";
-		};
-		CBAAE46B2EC150B30047F21B /* DreamWeaverIphoneAI Watch App */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "DreamWeaverIphoneAI Watch App";
-			sourceTree = "<group>";
-		};
-		CBAAE4792EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "DreamWeaverIphoneAI Watch AppTests";
-			sourceTree = "<group>";
-		};
-		CBAAE4832EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "DreamWeaverIphoneAI Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -208,9 +167,6 @@
 				CB76004C2EC09ADF00A3460C /* Dream VewawerUITests */,
 				CB5BE0CC2EC0AC94008F0645 /* DreamWeaver Watch App */,
 				CB0FCA672EC126CD0006368D /* DreamVeawerWatch */,
-				CBAAE46B2EC150B30047F21B /* DreamWeaverIphoneAI Watch App */,
-				CBAAE4792EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests */,
-				CBAAE4832EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests */,
 				CB7600312EC09ADD00A3460C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -223,10 +179,6 @@
 				CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */,
 				CB5BE0CB2EC0AC94008F0645 /* DreamWeaverWatch.appex */,
 				CB0FCA662EC126CD0006368D /* DreamVeawerWatch.appex */,
-				CBAAE4622EC150B30047F21B /* DreamWeaverIphoneAI.app */,
-				CBAAE4672EC150B30047F21B /* DreamWeaverIphoneAI Watch App.app */,
-				CBAAE4762EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests.xctest */,
-				CBAAE4802EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,93 +296,6 @@
 			);
 			productName = "Dream VewawerUITests";
 			productReference = CB7600492EC09ADF00A3460C /* Dream VewawerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		CBAAE4612EC150B30047F21B /* DreamWeaverIphoneAI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBAAE4922EC150B50047F21B /* Build configuration list for PBXNativeTarget "DreamWeaverIphoneAI" */;
-			buildPhases = (
-				CBAAE4602EC150B30047F21B /* Resources */,
-				CBAAE48A2EC150B50047F21B /* Embed Watch Content */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBAAE46A2EC150B30047F21B /* PBXTargetDependency */,
-			);
-			name = DreamWeaverIphoneAI;
-			packageProductDependencies = (
-			);
-			productName = DreamWeaverIphoneAI;
-			productReference = CBAAE4622EC150B30047F21B /* DreamWeaverIphoneAI.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
-		};
-		CBAAE4662EC150B30047F21B /* DreamWeaverIphoneAI Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBAAE4912EC150B50047F21B /* Build configuration list for PBXNativeTarget "DreamWeaverIphoneAI Watch App" */;
-			buildPhases = (
-				CBAAE4632EC150B30047F21B /* Sources */,
-				CBAAE4642EC150B30047F21B /* Frameworks */,
-				CBAAE4652EC150B30047F21B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				CBAAE46B2EC150B30047F21B /* DreamWeaverIphoneAI Watch App */,
-			);
-			name = "DreamWeaverIphoneAI Watch App";
-			packageProductDependencies = (
-			);
-			productName = "DreamWeaverIphoneAI Watch App";
-			productReference = CBAAE4672EC150B30047F21B /* DreamWeaverIphoneAI Watch App.app */;
-			productType = "com.apple.product-type.application";
-		};
-		CBAAE4752EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBAAE4932EC150B50047F21B /* Build configuration list for PBXNativeTarget "DreamWeaverIphoneAI Watch AppTests" */;
-			buildPhases = (
-				CBAAE4722EC150B50047F21B /* Sources */,
-				CBAAE4732EC150B50047F21B /* Frameworks */,
-				CBAAE4742EC150B50047F21B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBAAE4782EC150B50047F21B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CBAAE4792EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests */,
-			);
-			name = "DreamWeaverIphoneAI Watch AppTests";
-			packageProductDependencies = (
-			);
-			productName = "DreamWeaverIphoneAI Watch AppTests";
-			productReference = CBAAE4762EC150B50047F21B /* DreamWeaverIphoneAI Watch AppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CBAAE47F2EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBAAE4942EC150B50047F21B /* Build configuration list for PBXNativeTarget "DreamWeaverIphoneAI Watch AppUITests" */;
-			buildPhases = (
-				CBAAE47C2EC150B50047F21B /* Sources */,
-				CBAAE47D2EC150B50047F21B /* Frameworks */,
-				CBAAE47E2EC150B50047F21B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBAAE4822EC150B50047F21B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CBAAE4832EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests */,
-			);
-			name = "DreamWeaverIphoneAI Watch AppUITests";
-			packageProductDependencies = (
-			);
-			productName = "DreamWeaverIphoneAI Watch AppUITests";
-			productReference = CBAAE4802EC150B50047F21B /* DreamWeaverIphoneAI Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -677,7 +542,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = GJSA.DreamVeawerWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -705,7 +570,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = GJSA.DreamVeawerWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -1126,7 +991,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = DreamWeaverIphoneAI;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1155,7 +1020,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = DreamWeaverIphoneAI;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

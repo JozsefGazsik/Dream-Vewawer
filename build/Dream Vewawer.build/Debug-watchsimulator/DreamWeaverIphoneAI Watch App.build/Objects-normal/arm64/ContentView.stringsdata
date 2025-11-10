@@ -1,0 +1,128 @@
+{
+  "source": "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/DreamWeaverIphoneAI Watch App/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Error",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "🌙 DREAM",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 23
+        }
+      },
+      {
+        "comment": "",
+        "key": "TRACKER",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "⏱️ TRACKING...",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "📱 CONNECTED",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "📱 OFFLINE",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 45
+        }
+      },
+      {
+        "comment": "",
+        "key": "💓",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "BPM",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "💓",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "---",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "BPM",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "STOP",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "START",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 117
+        }
+      }
+    ]
+  },
+  "version": 1
+}
