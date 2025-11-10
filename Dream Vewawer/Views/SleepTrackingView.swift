@@ -20,6 +20,7 @@ struct SleepTrackingView: View {
     @State private var timer: Timer?
     @State private var isProcessingAI = false
     @State private var currentSessionId: UUID?
+    @State private var currentSleepSession: SleepData?
     
     @StateObject private var aiService = AIDreamService()
     @StateObject private var connectivityManager = WatchConnectivityManager.shared
@@ -151,6 +152,12 @@ struct SleepTrackingView: View {
         
         // Start tracking on Watch if connected
         if let sessionId = currentSessionId {
+            let sessionStartDate = startTime ?? Date()
+            let sleepSession = SleepData(date: sessionStartDate)
+            sleepSession.id = sessionId
+            modelContext.insert(sleepSession)
+            currentSleepSession = sleepSession
+            connectivityManager.registerLocalSession(sessionId: sessionId, startDate: sessionStartDate)
             connectivityManager.startSleepSession(sessionId: sessionId)
         }
         
@@ -178,29 +185,64 @@ struct SleepTrackingView: View {
         // Stop tracking on Watch
         connectivityManager.stopSleepSession()
         
-        // Create sleep data with biosignals
-        let sleepSession = SleepData(
-            date: startTime ?? Date(),
-            duration: elapsedTime,
-            avgHeartRate: connectivityManager.isWatchConnected ? connectivityManager.latestHeartRate : (65 + Double.random(in: -5...10)),
-            heartRateVariability: connectivityManager.isWatchConnected ? connectivityManager.latestHRV : Double.random(in: 30...70),
-            movementIntensity: Double.random(in: 0.2...0.6),
-            remPercentage: Double.random(in: 15...30),
-            deepSleepPercentage: Double.random(in: 20...35),
-            ambientNoiseLevel: Double.random(in: 0.1...0.4)
-        )
-        
-        // Set the session ID so Watch data can be correlated
-        if let sessionId = currentSessionId {
-            sleepSession.id = sessionId
+        guard let sessionId = currentSessionId else {
+            dismiss()
+            return
         }
         
-        modelContext.insert(sleepSession)
+        // Fetch existing sleep session (created at start) and update metrics
+        let descriptor = FetchDescriptor<SleepData>(
+            predicate: #Predicate { $0.id == sessionId }
+        )
+        let sleepSession: SleepData?
+        do {
+            sleepSession = try modelContext.fetch(descriptor).first ?? currentSleepSession
+        } catch {
+            print("❌ Failed to fetch sleep session: \(error.localizedDescription)")
+            sleepSession = currentSleepSession
+        }
+        
+        if let sleepSession {
+            let durationValue = elapsedTime
+            let timeline = sleepSession.biosignalTimeline
+            let avgHeartRate = averageValue(in: timeline.map { $0.heartRate })
+            let avgHRV = averageValue(in: timeline.map { $0.hrv })
+            let fallbackHeartRate = connectivityManager.isWatchConnected ? connectivityManager.latestHeartRate : currentHeartRate
+            let fallbackHRV = connectivityManager.isWatchConnected ? connectivityManager.latestHRV : Double.random(in: 30...70)
+            
+            sleepSession.date = startTime ?? sleepSession.date
+            sleepSession.duration = durationValue
+            sleepSession.avgHeartRate = timeline.isEmpty ? fallbackHeartRate : avgHeartRate
+            sleepSession.heartRateVariability = timeline.isEmpty ? fallbackHRV : avgHRV
+            sleepSession.movementIntensity = currentMovement
+            sleepSession.remPercentage = Double.random(in: 15...30)
+            sleepSession.deepSleepPercentage = Double.random(in: 20...35)
+            sleepSession.ambientNoiseLevel = Double.random(in: 0.1...0.4)
+            
+            let updatedMood = SleepData.calculateDreamMood(
+                hrv: sleepSession.heartRateVariability,
+                movement: sleepSession.movementIntensity,
+                rem: sleepSession.remPercentage
+            )
+            sleepSession.dreamMood = updatedMood
+            sleepSession.dreamColors = SleepData.generateDreamColors(
+                mood: updatedMood,
+                hrv: sleepSession.heartRateVariability,
+                noise: sleepSession.ambientNoiseLevel
+            )
+            
+            do {
+                try modelContext.save()
+            } catch {
+                print("❌ Failed to save sleep session: \(error.localizedDescription)")
+            }
+        }
         
         // Generate AI interpretation asynchronously
         isProcessingAI = true
         Task {
-            if let interpretation = await aiService.interpretDream(from: sleepSession) {
+            if let sleepSession,
+               let interpretation = await aiService.interpretDream(from: sleepSession) {
                 // Store AI interpretation in sleep data
                 sleepSession.aiNarrative = interpretation.narrative
                 sleepSession.aiThemes = interpretation.themes
@@ -213,14 +255,26 @@ struct SleepTrackingView: View {
                 if !interpretation.mood.isEmpty {
                     sleepSession.dreamMood = interpretation.mood
                 }
+                do {
+                    try modelContext.save()
+                } catch {
+                    print("❌ Failed to persist AI interpretation: \(error.localizedDescription)")
+                }
             }
             
             isProcessingAI = false
+            connectivityManager.completeLocalSession(sessionId: sessionId)
             currentSessionId = nil
+            currentSleepSession = nil
             
             // Dismiss and go back to main view
             dismiss()
         }
+    }
+    
+    private func averageValue(in values: [Double]) -> Double {
+        guard !values.isEmpty else { return 0 }
+        return values.reduce(0, +) / Double(values.count)
     }
     
     private func timeString(from timeInterval: TimeInterval) -> String {

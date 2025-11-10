@@ -65,10 +65,10 @@ sleep 2
 # Watch app build és indítás
 echo ""
 echo "⌚️ Watch app build és indítás..."
+WATCH_SCHEME="DreamWeaverIphoneAI Watch App"
 xcodebuild -project "Dream Vewawer.xcodeproj" \
-    -scheme "DreamWeaverWatch" \
-    -destination "id=$WATCH_ID" \
-    -sdk watchsimulator \
+    -scheme "$WATCH_SCHEME" \
+    -destination "generic/platform=watchsimulator" \
     -configuration Debug \
     build \
     CODE_SIGN_IDENTITY="" \
@@ -80,17 +80,19 @@ if [ $? -eq 0 ]; then
     echo "✅ Watch app build sikeres"
     
     # Watch app telepítés és indítás
-    WATCH_APP=$(find ~/Library/Developer/Xcode/DerivedData -name "DreamWeaver Watch App.appex" -path "*Debug-watchsimulator*" | head -1)
+    WATCH_APP=$(find ~/Library/Developer/Xcode/DerivedData -name "DreamWeaverIphoneAI Watch App.app" -path "*Debug-watchsimulator*" | head -1)
     if [ -n "$WATCH_APP" ]; then
         xcrun simctl install "$WATCH_ID" "$WATCH_APP"
         sleep 2
         
         # Watch app indítás (több módszerrel próbálkozunk)
-        xcrun simctl launch "$WATCH_ID" "GJSA.Dream-Vewawer.DreamWeaverWatchApp" 2>/dev/null || {
+        xcrun simctl launch "$WATCH_ID" "GJSA.DreamWeaverIphoneAI.watchkitapp" 2>/dev/null || {
             echo "⚠️  Watch app indítás command line-ból sikertelen"
             echo "💡 Kattints a DreamWeaver ikonra a Watch-on!"
         }
         echo "✅ Watch app telepítve"
+    else
+        echo "❌ Nem található a watch app bundle (keresett név: 'DreamWeaverIphoneAI Watch App.app')"
     fi
 else
     echo "❌ Watch app build hiba"
