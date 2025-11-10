@@ -49,6 +49,13 @@ class WorkoutManager: NSObject, ObservableObject {
     
     // Request HealthKit authorization
     func requestAuthorization() {
+        guard healthDataAvailable else {
+            DispatchQueue.main.async {
+                self.isAuthorized = false
+            }
+            return
+        }
+        
         let typesToShare: Set = [
             HKQuantityType.workoutType()
         ]
@@ -120,9 +127,11 @@ class WorkoutManager: NSObject, ObservableObject {
             }
             
             // Send confirmation to iPhone
+            let sessionId = currentSessionId ?? UUID()
+            currentSessionId = sessionId
             sendMessageToiPhone([
                 "command": "sessionStarted",
-                "sessionId": currentSessionId?.uuidString ?? UUID().uuidString,
+                "sessionId": sessionId.uuidString,
                 "timestamp": Date().timeIntervalSince1970
             ])
             
