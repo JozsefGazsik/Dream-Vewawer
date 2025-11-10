@@ -1,4 +1,4 @@
-# AI Dream Interpretation Configuration Guide
+#  AI Dream Interpretation Configuration Guide
 
 ## Overview
 The DreamWeaver app now includes AI-powered dream interpretation that analyzes your sleep biosignals and generates personalized, poetic dream narratives with enhanced visualizations.
