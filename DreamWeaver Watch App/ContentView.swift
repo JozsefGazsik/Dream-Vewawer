@@ -7,7 +7,6 @@
 
 import SwiftUI
 import HealthKit
-import WatchConnectivity
 
 struct ContentView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
@@ -122,6 +121,9 @@ struct ContentView: View {
             print("🔄 Watch ContentView appeared!")
             setupWatchApp()
         }
+        .onReceive(workoutManager.$isPhoneReachable) { reachable in
+            isConnectedToiPhone = reachable
+        }
         .alert("Error", isPresented: $showingError) {
             Button("OK") { }
         } message: {
@@ -134,7 +136,7 @@ struct ContentView: View {
     private func setupWatchApp() {
         print("🌙 DreamWeaver Watch App - Indulás")
         workoutManager.requestAuthorization()
-        checkiPhoneConnection()
+        isConnectedToiPhone = workoutManager.isPhoneReachable
         
         // Heart rate frissítés figyelése
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
@@ -145,48 +147,21 @@ struct ContentView: View {
     private func startTracking() {
         print("▶️ Sleep tracking indítása...")
         
-        workoutManager.startWorkout()
+        workoutManager.startManualSession()
         isTracking = true
-        
-        // Értesítsd az iPhone-t
-        sendMessageToiPhone(["action": "start_sleep"])
     }
     
     private func stopTracking() {
         print("⏹️ Sleep tracking leállítása...")
         
-        workoutManager.stopWorkout()
+        workoutManager.stopManualSession()
         isTracking = false
         heartRate = 0.0
-        
-        // Értesítsd az iPhone-t
-        sendMessageToiPhone(["action": "stop_sleep"])
     }
     
     private func updateHeartRate() {
         // WorkoutManager-ből kérdezd le a legfrissebb pulzust
         heartRate = workoutManager.heartRate
-    }
-    
-    private func checkiPhoneConnection() {
-        if WCSession.default.isReachable {
-            isConnectedToiPhone = true
-        } else {
-            isConnectedToiPhone = false
-        }
-    }
-    
-    private func sendMessageToiPhone(_ message: [String: Any]) {
-        guard WCSession.default.isReachable else {
-            print("📱 iPhone nem elérhető")
-            return
-        }
-        
-        WCSession.default.sendMessage(message) { response in
-            print("📱 iPhone válasz: \(response)")
-        } errorHandler: { error in
-            print("📱 iPhone üzenet hiba: \(error.localizedDescription)")
-        }
     }
     
     private func showError(_ message: String) {

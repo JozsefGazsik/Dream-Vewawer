@@ -18,6 +18,7 @@ class WorkoutManager: NSObject, ObservableObject {
     @Published var hrv: Double = 0
     @Published var elapsedTime: TimeInterval = 0
     @Published var isAuthorized = false
+    @Published var isPhoneReachable = false
     
     var session: HKWorkoutSession?
     var builder: HKLiveWorkoutBuilder?
@@ -25,8 +26,16 @@ class WorkoutManager: NSObject, ObservableObject {
     var timer: Timer?
     var dataTimer: Timer?
     var currentSessionId: UUID?
+    private var isSimulatedSession = false
     
     private var wcSession: WCSession?
+    private var healthDataAvailable: Bool {
+        #if targetEnvironment(simulator)
+        return false
+        #else
+        return HKHealthStore.isHealthDataAvailable()
+        #endif
+    }
     
     override init() {
         super.init()
@@ -60,6 +69,15 @@ class WorkoutManager: NSObject, ObservableObject {
     
     // Start workout session
     func startWorkout() {
+        if currentSessionId == nil {
+            currentSessionId = UUID()
+        }
+        
+        if !healthDataAvailable {
+            startSimulatedSession()
+            return
+        }
+        
         let configuration = HKWorkoutConfiguration()
         configuration.activityType = .other
         configuration.locationType = .indoor
@@ -104,11 +122,13 @@ class WorkoutManager: NSObject, ObservableObject {
             // Send confirmation to iPhone
             sendMessageToiPhone([
                 "command": "sessionStarted",
+                "sessionId": currentSessionId?.uuidString ?? UUID().uuidString,
                 "timestamp": Date().timeIntervalSince1970
             ])
             
         } catch {
             print("Failed to start workout: \(error.localizedDescription)")
+            startSimulatedSession()
         }
     }
     
@@ -120,6 +140,11 @@ class WorkoutManager: NSObject, ObservableObject {
         dataTimer?.invalidate()
         dataTimer = nil
         
+        if isSimulatedSession {
+            stopSimulatedSession()
+            return
+        }
+        
         // Send final data to iPhone
         sendBiosignalDataToiPhone()
         
@@ -127,11 +152,90 @@ class WorkoutManager: NSObject, ObservableObject {
             self.isTracking = false
         }
         
-        // Send confirmation to iPhone
+        let sessionId = currentSessionId ?? UUID()
         sendMessageToiPhone([
             "command": "sessionStopped",
+            "sessionId": sessionId.uuidString,
             "timestamp": Date().timeIntervalSince1970
         ])
+        
+        currentSessionId = nil
+    }
+    
+    func startManualSession() {
+        currentSessionId = UUID()
+        startWorkout()
+    }
+    
+    func stopManualSession() {
+        stopWorkout()
+    }
+    
+    // MARK: - Simulator Support
+    
+    private func startSimulatedSession() {
+        let sessionId = currentSessionId ?? UUID()
+        currentSessionId = sessionId
+        isSimulatedSession = true
+        startDate = Date()
+        
+        DispatchQueue.main.async {
+            self.isTracking = true
+            self.elapsedTime = 0
+        }
+        
+        timer?.invalidate()
+        dataTimer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self = self, let start = self.startDate else { return }
+            DispatchQueue.main.async {
+                self.elapsedTime = Date().timeIntervalSince(start)
+            }
+        }
+        
+        dataTimer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            let simulatedHeartRate = Double.random(in: 55...75)
+            let simulatedHRV = Double.random(in: 35...75)
+            
+            DispatchQueue.main.async {
+                self.heartRate = simulatedHeartRate
+                self.hrv = simulatedHRV
+            }
+            
+            self.sendBiosignalDataToiPhone()
+        }
+        
+        sendMessageToiPhone([
+            "command": "sessionStarted",
+            "sessionId": sessionId.uuidString,
+            "timestamp": Date().timeIntervalSince1970,
+            "simulated": true
+        ])
+    }
+    
+    private func stopSimulatedSession() {
+        let sessionId = currentSessionId
+        isSimulatedSession = false
+        
+        DispatchQueue.main.async {
+            self.isTracking = false
+        }
+        
+        timer?.invalidate()
+        dataTimer?.invalidate()
+        timer = nil
+        dataTimer = nil
+        
+        if let sessionId {
+            sendMessageToiPhone([
+                "command": "sessionStopped",
+                "sessionId": sessionId.uuidString,
+                "timestamp": Date().timeIntervalSince1970,
+                "simulated": true
+            ])
+        }
         
         currentSessionId = nil
     }
@@ -283,6 +387,9 @@ extension WorkoutManager: HKLiveWorkoutBuilderDelegate {
 extension WorkoutManager: WCSessionDelegate {
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("⌚️ Watch session activated: \(activationState.rawValue)")
+        DispatchQueue.main.async {
+            self.isPhoneReachable = session.isReachable
+        }
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
@@ -322,6 +429,12 @@ extension WorkoutManager: WCSessionDelegate {
             }
         } else {
             replyHandler(["status": "no command"])
+        }
+    }
+    
+    func sessionReachabilityDidChange(_ session: WCSession) {
+        DispatchQueue.main.async {
+            self.isPhoneReachable = session.isReachable
         }
     }
 }
