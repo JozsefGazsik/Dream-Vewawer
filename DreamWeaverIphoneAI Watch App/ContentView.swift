@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  DreamWeaverIphoneAI Watch App
 //
-//  Created by Gazsik Jozsef 6035 ED on 09.11.2025.
+//  Created by GazsikJozsef 6035 ED on 09.11.2025.
 //
 
 import SwiftUI
