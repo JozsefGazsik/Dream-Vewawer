@@ -62,41 +62,39 @@ fi
 
 sleep 2
 
-# Watch app build és indítás
+###############################################
+# Watch tartalmazó iPhone container build
+# A watchOS appot a container (watchapp2-container) telepítése
+# fogja automatikusan párosítani a Watch szimulátorral.
+###############################################
 echo ""
-echo "⌚️ Watch app build és indítás..."
-WATCH_SCHEME="DreamWeaverIphoneAI Watch App"
+echo "🧩 Watch container build (iPhone target + beágyazott Watch)"
+CONTAINER_SCHEME="DreamWeaverIphoneAI"
 xcodebuild -project "Dream Vewawer.xcodeproj" \
-    -scheme "$WATCH_SCHEME" \
-    -destination "generic/platform=watchsimulator" \
+    -scheme "$CONTAINER_SCHEME" \
+    -destination "id=$IPHONE_ID" \
     -configuration Debug \
     build \
     CODE_SIGN_IDENTITY="" \
     CODE_SIGNING_REQUIRED=NO \
     CODE_SIGNING_ALLOWED=NO \
-    > /tmp/watch_build.log 2>&1
+    > /tmp/watch_container_build.log 2>&1 || WATCH_CONTAINER_STATUS=$?
 
-if [ $? -eq 0 ]; then
-    echo "✅ Watch app build sikeres"
-    
-    # Watch app telepítés és indítás
-    WATCH_APP=$(find ~/Library/Developer/Xcode/DerivedData -name "DreamWeaverIphoneAI Watch App.app" -path "*Debug-watchsimulator*" | head -1)
-    if [ -n "$WATCH_APP" ]; then
-        xcrun simctl install "$WATCH_ID" "$WATCH_APP"
-        sleep 2
-        
-        # Watch app indítás (több módszerrel próbálkozunk)
-        xcrun simctl launch "$WATCH_ID" "GJSA.DreamWeaverIphoneAI.watchkitapp" 2>/dev/null || {
-            echo "⚠️  Watch app indítás command line-ból sikertelen"
-            echo "💡 Kattints a DreamWeaver ikonra a Watch-on!"
-        }
-        echo "✅ Watch app telepítve"
+if [ "${WATCH_CONTAINER_STATUS:-0}" -eq 0 ]; then
+    echo "✅ Watch container build sikeres"
+    CONTAINER_APP=$(find ~/Library/Developer/Xcode/DerivedData -name "DreamWeaverIphoneAI.app" -path "*Debug-iphonesimulator*" | head -1)
+    if [ -n "$CONTAINER_APP" ]; then
+        echo "📦 Container telepítése iPhone szimulátorra (Watch tartalommal)"
+        xcrun simctl install "$IPHONE_ID" "$CONTAINER_APP"
+        echo "🚀 Container indítása (watch tartalom auto-települ)"
+        xcrun simctl launch "$IPHONE_ID" "GJSA.DreamWeaverIphoneAI" 2>/dev/null || echo "⚠️ Container indítás nem sikerült automatikusan"
+        echo "⌚️ Ellenőrzés: Watch app ikon meg kell jelenjen a Watch szimulátoron"
     else
-        echo "❌ Nem található a watch app bundle (keresett név: 'DreamWeaverIphoneAI Watch App.app')"
+        echo "❌ Nem található a container app (DreamWeaverIphoneAI.app)"
     fi
 else
-    echo "❌ Watch app build hiba"
-    tail -10 /tmp/watch_build.log
+    echo "❌ Watch container build hiba"
+    tail -20 /tmp/watch_container_build.log
 fi
 
 echo ""
@@ -106,15 +104,15 @@ echo ""
 echo "📱 iPhone-on: Kattints 'Start Dream Mode'"
 echo "⌚️ Watch-on: FONTOS INSTRUKCIÓK!"
 echo ""
-echo "🔍 WATCH APP MEGTALÁLÁSA:"
-echo "   1. Nyomdd hosszan a Digital Crown-t (oldali gomb)"
-echo "   2. Vagy lépj ki a home screen-re (home gomb)" 
-echo "   3. Keresd a '🌙' DreamWeaver ikont"
-echo "   4. Ha nem látod, görgess lefelé/fel"
+echo "🔍 WATCH APP MEGTALÁLÁSA (Container telepítés után):"
+echo "   1. Nyomd meg a Digital Crown-t a Home Screen-hez"
+echo "   2. Keresd a '🌙' DreamWeaver ikont"
+echo "   3. Ha nem jelenik meg, várj 5–10 másodpercet a párosításhoz"
+echo "   4. Ha továbbra sem látható: Zárd be és nyisd újra a Watch szimulátort"
 echo ""
-echo "💡 ALTERNATÍVA: A Watch Extension-ök néha csak"
-echo "   az iPhone-ról indíthatóak. Próbáld a Watch"
-echo "   appot az iPhone-on keresztül elindítani."
+echo "💡 TIPPEK: A watchOS appot nem közvetlenül kell"
+echo "   telepíteni; az iPhone container automatikusan"
+echo "   továbbítja a Watch-ra a beágyazott alkalmazást."
 echo ""
 echo "🔄 A két app automatikusan szinkronizál!"
 echo "💓 Pulzus és légzés mérés aktív"
