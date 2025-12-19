@@ -1,0 +1,49 @@
+{
+  "" : {
+    "diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAI Watch App-primary.dia",
+    "emit-module-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAI Watch App-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAI Watch App-primary-emit-module.dia",
+    "pch" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAI Watch App-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAI Watch App-primary.swiftdeps"
+  },
+  "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/DreamWeaverIphoneAI Watch App/ContentView.swift" : {
+    "const-values" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/DreamWeaverIphoneAI Watch App/DreamWeaverIphoneAIApp.swift" : {
+    "const-values" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.swiftconstvalues",
+    "dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.d",
+    "diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.dia",
+    "index-unit-output-path" : "/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.o",
+    "llvm-bc" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.bc",
+    "object" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.o",
+    "swift-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp.swiftdeps",
+    "swiftmodule" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/DreamWeaverIphoneAIApp~partial.swiftmodule"
+  },
+  "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/DreamWeaverIphoneAI Watch App/WorkoutManager.swift" : {
+    "const-values" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.swiftconstvalues",
+    "dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.d",
+    "diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.dia",
+    "index-unit-output-path" : "/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.o",
+    "llvm-bc" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.bc",
+    "object" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.o",
+    "swift-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager.swiftdeps",
+    "swiftmodule" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/WorkoutManager~partial.swiftmodule"
+  },
+  "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/SEV0A/Iphone/GJSPO/DreamWeaver/Dream Vewawer/build/Dream Vewawer.build/Debug-watchos/DreamWeaverIphoneAI Watch App.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

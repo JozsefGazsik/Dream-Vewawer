@@ -42,6 +42,15 @@ class WorkoutManager: NSObject, ObservableObject {
         #endif
     }
     func requestAuthorization() {
+        // Check if HealthKit is available first
+        guard HKHealthStore.isHealthDataAvailable() else {
+            print("⚠️ HealthKit not available on this device")
+            DispatchQueue.main.async {
+                self.isAuthorized = false
+            }
+            return
+        }
+        
         let typesToShare: Set = [HKQuantityType.workoutType()]
         let typesToRead: Set = [
             HKQuantityType.quantityType(forIdentifier: .heartRate)!,
@@ -49,8 +58,17 @@ class WorkoutManager: NSObject, ObservableObject {
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
             HKObjectType.activitySummaryType()
         ]
+        
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { success, error in
-            if let error = error { print("HealthKit authorization error: \(error.localizedDescription)") }
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("❌ HealthKit authorization error: \(error.localizedDescription)")
+                    self.isAuthorized = false
+                } else {
+                    print("✅ HealthKit authorization: \(success ? "granted" : "denied")")
+                    self.isAuthorized = success
+                }
+            }
         }
     }
     func startWorkout() {
