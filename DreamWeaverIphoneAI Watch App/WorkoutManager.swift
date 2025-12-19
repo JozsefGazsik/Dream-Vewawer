@@ -42,6 +42,16 @@ class WorkoutManager: NSObject, ObservableObject {
         #endif
     }
     func requestAuthorization() {
+        #if targetEnvironment(simulator)
+        // On the simulator HealthKit authorization often crashes if
+        // purpose strings are not wired exactly right. Skip real
+        // authorization here and behave as if it succeeded.
+        print("ℹ️ Skipping HealthKit authorization on watchOS simulator")
+        DispatchQueue.main.async {
+            self.isAuthorized = true
+        }
+        return
+        #else
         // Check if HealthKit is available first
         guard HKHealthStore.isHealthDataAvailable() else {
             print("⚠️ HealthKit not available on this device")
@@ -50,7 +60,7 @@ class WorkoutManager: NSObject, ObservableObject {
             }
             return
         }
-        
+
         let typesToShare: Set = [HKQuantityType.workoutType()]
         let typesToRead: Set = [
             HKQuantityType.quantityType(forIdentifier: .heartRate)!,
@@ -58,18 +68,19 @@ class WorkoutManager: NSObject, ObservableObject {
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!,
             HKObjectType.activitySummaryType()
         ]
-        
+
         healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { success, error in
             DispatchQueue.main.async {
                 if let error = error {
                     print("❌ HealthKit authorization error: \(error.localizedDescription)")
                     self.isAuthorized = false
                 } else {
-                    print("✅ HealthKit authorization: \(success ? "granted" : "denied")")
+                    print("✅ HealthKit authorization: \(success ? \"granted\" : \"denied\")")
                     self.isAuthorized = success
                 }
             }
         }
+        #endif
     }
     func startWorkout() {
         if currentSessionId == nil { currentSessionId = UUID() }

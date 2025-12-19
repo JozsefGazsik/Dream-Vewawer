@@ -1125,6 +1125,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = DreamWeaverIphoneAI;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DreamWeaver needs access to your health data to monitor heart rate, energy and distance during sleep sessions.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DreamWeaver saves workout and sleep-related health data to analyze and visualize your dreams.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1154,6 +1156,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = DreamWeaverIphoneAI;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "DreamWeaver needs access to your health data to monitor heart rate, energy and distance during sleep sessions.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "DreamWeaver saves workout and sleep-related health data to analyze and visualize your dreams.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
