@@ -6,12 +6,21 @@
 //
 
 import SwiftUI
+import WatchConnectivity
 
 @main
 struct DreamWeaverIphoneAI_Watch_AppApp: App {
+    @StateObject private var workoutManager = WorkoutManager()
+    
+    init() {
+        print("🌙 DreamWeaverIphoneAI Watch App Started")
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(workoutManager)
+                .onAppear { print("⌚️ Watch ContentView active") }
         }
     }
 }

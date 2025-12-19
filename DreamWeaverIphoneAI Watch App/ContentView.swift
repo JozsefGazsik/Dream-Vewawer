@@ -6,19 +6,119 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct ContentView: View {
+    @EnvironmentObject var workoutManager: WorkoutManager
+    @State private var isTracking = false
+    @State private var heartRate: Double = 0.0
+    @State private var isConnectedToiPhone = false
+    @State private var showingError = false
+    @State private var errorMessage = ""
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 8) {
+            Text("🌙 DREAM")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.yellow)
+            Text("TRACKER")
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+            Rectangle()
+                .fill(Color.yellow)
+                .frame(height: 2)
+                .padding(.horizontal, 20)
+            Group {
+                if isConnectedToiPhone {
+                    Text("📱 CONNECTED")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
+                } else {
+                    Text("📱 OFFLINE")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.red)
+                }
+            }
+            Group {
+                if heartRate > 0 {
+                    VStack(spacing: 2) {
+                        Text("💓").font(.title2)
+                        Text("\(Int(heartRate))")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                        Text("BPM")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                } else {
+                    VStack(spacing: 2) {
+                        Text("💓").font(.title2)
+                        Text("---")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                        Text("BPM")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            Spacer()
+            Button(action: {
+                print("🔘 WATCH BUTTON PRESSED! Current state: \(isTracking)")
+                if isTracking { stopTracking() } else { startTracking() }
+            }) {
+                VStack(spacing: 4) {
+                    Image(systemName: isTracking ? "stop.fill" : "play.fill")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    Text(isTracking ? "STOP" : "START")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 50)
+                .background(isTracking ? Color.red : Color.green)
+                .cornerRadius(25)
+            }
+            .buttonStyle(PlainButtonStyle())
+            if isTracking {
+                Text("⏱️ TRACKING...")
+                    .font(.caption2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.yellow)
+                    .padding(.top, 4)
+            }
         }
-        .padding()
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(Color.black.ignoresSafeArea())
+        .onAppear { setupWatchApp() }
+        .onReceive(workoutManager.$isPhoneReachable) { reachable in
+            isConnectedToiPhone = reachable
+        }
+        .alert("Error", isPresented: $showingError) {
+            Button("OK") { }
+        } message: { Text(errorMessage) }
     }
+    
+    private func setupWatchApp() {
+        workoutManager.requestAuthorization()
+        isConnectedToiPhone = workoutManager.isPhoneReachable
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+            updateHeartRate()
+        }
+    }
+    private func startTracking() { workoutManager.startManualSession(); isTracking = true }
+    private func stopTracking() { workoutManager.stopManualSession(); isTracking = false; heartRate = 0 }
+    private func updateHeartRate() { heartRate = workoutManager.heartRate }
+    private func showError(_ message: String) { errorMessage = message; showingError = true; print("❌ Hiba: \(message)") }
 }
 
-#Preview {
-    ContentView()
-}
+#Preview { ContentView().environmentObject(WorkoutManager()) }

@@ -30,6 +30,7 @@ sleep 3
 echo ""
 echo "🧹 Build cache törlése..."
 rm -rf ~/Library/Developer/Xcode/DerivedData/Dream_Vewawer-*
+rm -rf ~/Library/Developer/Xcode/DerivedData/*Dream* 2>/dev/null || true
 
 # iPhone app build és indítás
 echo ""
@@ -84,11 +85,19 @@ if [ "${WATCH_CONTAINER_STATUS:-0}" -eq 0 ]; then
     echo "✅ Watch container build sikeres"
     CONTAINER_APP=$(find ~/Library/Developer/Xcode/DerivedData -name "DreamWeaverIphoneAI.app" -path "*Debug-iphonesimulator*" | head -1)
     if [ -n "$CONTAINER_APP" ]; then
+        echo "🧽 Régi Watch appok eltávolítása a Watch szimulátorról"
+        xcrun simctl uninstall "$WATCH_ID" "GJSA.Dream-Vewawer.DreamWeaverWatchApp" 2>/dev/null || true
+        xcrun simctl uninstall "$WATCH_ID" "GJSA.DreamVeawerWatch" 2>/dev/null || true
+        xcrun simctl uninstall "$WATCH_ID" "GJSA.DreamWeaverIphoneAI.watchkitapp" 2>/dev/null || true
+
         echo "📦 Container telepítése iPhone szimulátorra (Watch tartalommal)"
         xcrun simctl install "$IPHONE_ID" "$CONTAINER_APP"
         echo "🚀 Container indítása (watch tartalom auto-települ)"
         xcrun simctl launch "$IPHONE_ID" "GJSA.DreamWeaverIphoneAI" 2>/dev/null || echo "⚠️ Container indítás nem sikerült automatikusan"
-        echo "⌚️ Ellenőrzés: Watch app ikon meg kell jelenjen a Watch szimulátoron"
+        echo "⌚️ Watch app telepítése közvetlen indítással"
+        # A container telepítés után próbáljuk meg közvetlenül indítani a megfelelő Watch bundle ID-t
+        xcrun simctl launch "$WATCH_ID" "GJSA.DreamWeaverIphoneAI.watchkitapp" 2>/dev/null || echo "⚠️ Közvetlen Watch indítás nem sikerült, nyisd meg manuálisan az ikont"
+        echo "⌚️ Ellenőrzés: DreamWeaver Watch app meg kell jelenjen a Watch szimulátoron"
     else
         echo "❌ Nem található a container app (DreamWeaverIphoneAI.app)"
     fi
